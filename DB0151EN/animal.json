@@ -1,0 +1,154 @@
+{
+    "docs": [
+        {
+            "_id": "1",
+            "class": "mammals",
+            "latin_name": "Lion",
+            "diet": "Carnivore"
+        },
+        {
+            "_id": "2",
+            "class": "mammals",
+            "latin_name": "panda",
+            "diet": "Carnivore"
+        },
+        {
+            "_id": "3",
+            "class": "Bird",
+            "latin_name": "Owal",
+            "diet": "Insectivore"
+        },
+        {
+            "_id": "4",
+            "class": "Reptilia",
+            "latin_name": "Tortoise",
+            "diet": "herbivore"
+        },
+        {
+            "_id": "5",
+            "class": "Arachnids",
+            "latin_name": "Spider",
+            "diet": "Carnivore"
+        },
+        {
+            "_id": "6",
+            "class": "Mammal",
+            "latin_name": "Zebra",
+            "diet": "Carnivore"
+        },
+        {
+            "_id": "7",
+            "class": "Bird",
+            "latin_name": "Piegon",
+            "diet": "herbivore"
+        },
+        {
+            "_id": "8",
+            "class": "cat",
+            "latin_name": "Purrpaws",
+            "diet": "Omnivore"
+        },
+        {
+            "_id": "9",
+            "class": "dog",
+            "latin_name": "Barky",
+            "diet": "Omnivore"
+        },
+        {
+            "_id": "10",
+            "class": "cat",
+            "latin_name": "Meow",
+            "diet": "Omnivore"
+        },
+        {
+            "_id": "11",
+            "class": "Amphibia",
+            "latin_name": "frog",
+            "diet": "Insectivore"
+        },
+        {
+            "_id": "12",
+            "class": "mammals",
+            "latin_name": "wolf",
+            "diet": "Carnivore"
+        },
+        {
+            "_id": "13",
+            "class": "mammals",
+            "latin_name": "Kangaroo",
+            "diet": "Herbivore"
+        },
+        {
+            "_id": "14",
+            "class": "mammals",
+            "latin_name": "Hyena",
+            "diet": "Carnivore"
+        },
+        {
+            "_id": "15",
+            "class": "mammals",
+            "latin_name": "jaguar",
+            "diet": "Carnivore"
+        },
+        {
+            "_id": "16",
+            "class": "mammals",
+            "latin_name": "Fox",
+            "diet": "Carnivore"
+        },
+        {
+            "_id": "17",
+            "class": "aves",
+            "latin_name": "Nightingle",
+            "diet": "Insectivore"
+        },
+        {
+            "_id": "18",
+            "class": "Repltiles",
+            "latin_name": "crocodile",
+            "diet": "Carnivore"
+        },
+        {
+            "_id": "19",
+            "class": "mammals",
+            "latin_name": "Sheep",
+            "diet": "Herbivore"
+        },
+        {
+            "_id": "20",
+            "class": "mammals",
+            "latin_name": "Giraffe",
+            "diet": "Herbivore"
+        },
+        {
+            "_id": "21",
+            "class": "mammals",
+            "latin_name": "Aardwolf",
+            "diet": "Insectivore"
+        },
+        {
+            "_id": "22",
+            "class": "Repltiles",
+            "latin_name": "Lizards",
+            "diet": "Insectivore"
+        },
+        {
+            "_id": "23",
+            "class": "Aves",
+            "latin_name": "Chicken",
+            "diet": "Omnivore"
+        },
+        {
+            "_id": "24",
+            "class": "mammals",
+            "latin_name": "rabbit",
+            "diet": "Herbivore"
+        },
+        {
+            "_id": "24",
+            "class": "Aves",
+            "latin_name": "penguin",
+            "diet": "Omnivore"
+        }
+    ]
+}
