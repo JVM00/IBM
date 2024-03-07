@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #Export the json into your Cloudant Database
 
 curl -XPOST $CLOUDANTURL/animal/_bulk_docs -Hcontent-type:application/json -d @animal.json
