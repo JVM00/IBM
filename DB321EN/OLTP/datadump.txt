@@ -5,7 +5,7 @@ sudo nano datadump.sh
 
 #!/bin/sh
 
-mysql -u admin -p'Aristoteles25!' 'sales' -e "SELECT * FROM sales.sales_data" > sales_data.sql;
+mysql -u admin -p'XXXX' 'sales' -e "SELECT * FROM sales.sales_data" > sales_data.sql;
 
 sudo chmod +x datadump.sh
 
