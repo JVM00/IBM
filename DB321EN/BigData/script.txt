@@ -1,0 +1,67 @@
+!pip install pyspark==3.1.2 -q
+!pip install findspark -q
+
+import findspark
+findspark.init()
+
+from pyspark.sql import SparkSession
+
+#import functions/Classes for sparkml
+
+from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.regression import LinearRegression
+
+# import functions/Classes for metrics
+from pyspark.ml.evaluation import RegressionEvaluator
+
+spark = SparkSession.builder.appName("Spark_MLOps").getOrCreate()
+
+!wget https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0321EN-SkillsNetwork/Bigdata%20and%20Spark/searchterms.csv
+
+data = spark.read.csv("searchterms.csv", header=True, inferSchema=True)
+
+row = data.count()
+row
+
+col = len(data.columns)
+print(col)
+
+data.show(5)
+data.schema['searchterm'].dataType
+
+data.filter(data.searchterm=='gaming laptop').count()
+
+
+# Group by country and calculate total amount spent
+data_group = data.groupBy("searchterm").count().alias("total_words")
+#data_group.show()
+#print(data_group)
+# Sort the resulting DataFrame by total spending in descending order
+data_sorted = data_group.sort('count', ascending=False)
+
+# Show the top 10 countries with highest total spending
+data_sorted.show(5)
+
+
+#!wget https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0321EN-SkillsNetwork/Bigdata%20and%20Spark/model.tar.gz
+#!tar -xvzf model.tar.gz
+
+from pyspark.ml.regression import LinearRegressionModel
+model = LinearRegressionModel.load('sales_prediction.model')
+
+
+def predict(weight):
+    assembler = VectorAssembler(inputCols=["weight"],outputCol="features")
+    data = [[weight,0]]
+    columns = ["weight", "height"]
+    _ = spark.createDataFrame(data, columns)
+    __ = assembler.transform(_).select('features','height')
+    predictions = model.transform(__)
+    predictions.select('prediction').show()
+
+
+#predict the sales for the year of 2023
+coefficients=model.coefficients
+intercept= model.intercept
+print("Coefficients: ", coefficients)
+print("Intercept: {:.3f}".format(intercept))
