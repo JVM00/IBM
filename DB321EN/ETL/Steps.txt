@@ -1,0 +1,132 @@
+
+
+wget https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0321EN-SkillsNetwork/nosql/catalog.json
+
+mongoimport -u root -p Aristoteles25! --authenticationDatabase admin --db catalog --collection electronics --file catalog.json
+
+
+
+mongosh -u jvm -p Aristoteles25! --authenticationDatabase admin local
+
+
+show dbs
+use catalog
+show collections
+db.electronics.createIndex({"type":1})
+
+db.electronics.find()
+
+db.electronics.find({"type":"laptop"})
+
+db.electronics.count()
+
+db.electronics.count({"type":"laptop"})
+ db.electronics.countDocuments({"type":"laptop"})
+ db.electronics.countDocuments()
+
+db.electronics.find({"type":"smart phone"},{"screen size":6})
+db.electronics.countDocuments({"type":"smart phone"},{"screen size":6})
+
+db.electronics.aggregate([
+{
+    "$group":{
+        "_id":"$type",
+        "average":{"$avg":"$screen size"}
+        }
+}
+])
+
+db.electronics.aggregate([
+{
+    "$group":{
+        "_id":"$type",
+        "average":{"$avg":"$screen size"}
+        }
+},
+{ "$match": { "_id": "smart phone" } }
+])
+
+
+mongoexport -u root -p 'Aristoteles25!' --authenticationDatabase admin --db catalog --collection electronics --out electronics.csv --type=csv --fields _id,type,model
+_id, “type”, “model”,
+
+
+
+--softcartDimDate--
+
+dateid
+
+weekday
+month
+monthname
+year
+
+--softcartDimCategory--
+categoryid
+category
+
+
+--softcartDimItem--
+itemid
+item
+
+--softcartDimCountry--
+countryid
+country
+--softcartFactSales--
+--softcartRelationships--
+--Create the schema--
+
+
+
+softcartFactSales
+orderid
+itemid
+categoryid
+price
+countryid
+dateid
+
+dateid,date,Year,Quarter,QuarterName,Month,Monthname,Day,Weekday,WeekdayName
+
+
+country, category, totalsales
+
+SELECT WEEK(SALES_DATE) AS WEEK,
+         DAYOFWEEK(SALES_DATE) AS DAY_WEEK,
+         SALES_PERSON, SUM(SALES) AS UNITS_SOLD
+   FROM SALES 
+   WHERE WEEK(SALES_DATE) = 13
+   GROUP BY GROUPING SETS ((WEEK(SALES_DATE), SALES_PERSON),
+                           (DAYOFWEEK(SALES_DATE), SALES_PERSON))
+   ORDER BY WEEK, DAY_WEEK, SALES_PERSON;
+
+SELECT country, category, SUM(amount) AS totalsales
+FROM factsales
+group by GROUPING SETS (country, category);
+
+----------------------------------------------
+----------------------------------------------
+
+
+CREATE TABLE sales_data
+(
+rowid INT,
+product_id INT,
+customer_id INT,
+price decimal DEFAULT 0.0 NOT NULL,
+quantity INT,
+timeestamp timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+ALTER TABLE sales_data
+RENAME COLUMN timeestamp TO timestamp;
+
+/home/jvm/sales-csv3mo8i5SHvta76u7DzUfhiw.csv
+
+
+ psql -U postgres -d postgres -c "COPY sales_data(rowid,product_id,customer_id,price,quantity,timestamp)  FROM '/home/jvm/sales-csv3mo8i5SHvta76u7DzUfhiw.csv' DELIMITER ',' CSV HEADER;"
+
+
+12186
+
